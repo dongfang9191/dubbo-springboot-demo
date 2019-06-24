@@ -18,7 +18,8 @@
 	<!--用于暴露一个服务，定义服务的元信息，一个服务可以用多个协议暴露，一个服务也可以注册到多个注册中心 -->
 	<!--每个接口都应定义版本号，为后续不兼容升级提供可能 -->
 	<!--ref：服务的真正实现类 -->
-	<dubbo:service interface="com.test.dubbo.api.DefaultApiService" ref="defaultService" version="1.0.0"  />
+	<!--loadblance:负载均衡策略，既可以是客户端服务级别也可以是服务端服务级别，以下是服务端服务级别，还可以是方法级别，默认负载均衡策略是随机调用。还有轮询、hash、最少活跃调用数均衡算法等  -->
+	<dubbo:service interface="com.test.dubbo.api.DefaultApiService" loadblance="roundrobin" ref="defaultService" version="1.0.0"  />
 
 	<!--监控中心配置 监控中心协议，如果为protocol="registry"，表示从注册中心发现监控中心地址，否则直连监控中心。 -->
 	<!--<dubbo:monitor protocol="registry"></dubbo:monitor>-->
